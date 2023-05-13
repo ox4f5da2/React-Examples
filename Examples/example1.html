@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello React</title>
+</head>
+
+<body>
+
+  <div id="root"></div>
+
+  <!-- 添加依赖 -->
+  <!-- 依赖三个包 -->
+  <!-- 1. react: 包含react所必须的核心代码
+  2. react-dom: react渲染在不同平台所需要的核心代码
+  3. babel: 将jsx转换成React代码的工具 -->
+
+  <!-- CDN引入 React 18 -->
+  <!-- 1.引入React核心库-得到一个React对象 -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <!-- 2.引入React扩展库-得到ReactDOM对象 -->
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <!-- 3.引入babel-作用是将jsx转化为浏览器能够识别的js语法 --> <!-- 注：若是在开发过程中使用到了jsx语法(或使用es6等js高级语法)则引入babel,否则不需要引入 -->
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <script type="text/babel">
+    // React 18
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+    // 1.将文本定义成变量，把文本内容设置成变量来进行数据管理
+    let message = 'Hello World';
+
+    // 2.监听按钮的点击
+    function btnClick() {
+      // 3.修改message数据
+      message = 'Hello React';
+      // 4.重新渲染
+      render();
+    }
+
+    render();
+
+    function render() {
+      root.render((
+        <div>
+          <h2>{message}</h2>
+          <button onClick={btnClick}>修改文本</button>
+        </div>
+      ));
+    }
+  </script>
+</body>
+
+</html>
