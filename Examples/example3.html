@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>电影列表</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <script type="text/babel">
+    // 1. 创建root
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+
+    // 2.封装App组件
+    class App extends React.Component {
+      constructor() {
+        super();
+        this.state = {
+          movies: ['星际穿越', '流浪地球', '独行月球', '大话西游', '火星救援']
+        }
+      }
+      // 暴力型
+      // render() {
+      //   const { movies } = this.state;
+
+      //   return (
+      //     <div>
+      //       <h2>电影列表案例</h2>
+      //       <ul>
+      //         <li>{movies[0]}</li>
+      //         <li>{movies[1]}</li>
+      //         <li>{movies[2]}</li>
+      //         <li>{movies[3]}</li>
+      //         <li>{movies[4]}</li>
+      //       </ul>
+      //     </div>
+      //   )
+      // }
+
+      // for循环1
+      // render() {
+      //   const { movies } = this.state;
+      //   const list = [];
+      //   for(let i = 0, len = movies.length; i < len; i++) {
+      //     const movie = movies[i];
+      //     const li = <li>{movie}</li>;
+      //     list.push(li);
+      //   }
+
+      //   return (
+      //     <div>
+      //       <h2>电影列表案例</h2>
+      //       <ul>{list}</ul>
+      //     </div>
+      //   )
+      // }
+
+      // for循环2
+      render() {
+        const { movies } = this.state;
+        const list = movies.map(movie => <li>{movie}</li>);
+
+        return (
+          <div>
+            <h2>电影列表案例</h2>
+            <ul>{list}</ul>
+          </div>
+        )
+      }
+    }
+
+    // 3.渲染组件
+    root.render(<App />);
+  </script>
+
+</body>
+</html>
