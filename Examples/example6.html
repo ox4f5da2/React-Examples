@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>插入表达式</title>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+  <script type="text/babel">
+    // 1.定义App根组件
+    class App extends React.Component {
+      constructor() {
+        super();
+
+        this.state = {
+          firstName: 'Karl',
+          lastName: 'fang',
+          age: 23,
+          hobby: ['吃', '喝', '玩', '乐']
+        }
+      }
+
+      render() {
+        const { firstName, lastName, age, hobby }=this.state;
+        const fullName = firstName + " " + lastName;
+        return (
+          <div>
+            {/* 可以插入表达式 */}
+            <h2>{10 + 20}</h2>
+            <h2>{firstName + " " + lastName}</h2>
+            <h2>{fullName}</h2>
+
+            {/* 可以插入三元运算符 */}
+            <h2>{age > 18 ? '成年人' : '未成年人'}</h2>
+
+            {/* 可以调用函数获得结果 */}
+            <ul>{hobby.map(item => <li>{item}</li>)}</ul>
+          </div>
+        )
+      }
+    }
+
+    // 2.创建root并渲染App组件
+    const root = ReactDOM.createRoot(document.querySelector('#root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
